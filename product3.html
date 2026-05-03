@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set bé Cherry ngọt ngào - TWEE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #f7f9fc; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        a { text-decoration: none; }
+
+        .back-link {
+            color: #618bc4;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Ảnh chính + thumbnail */
+        #mainImage {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .thumb-img {
+            width: 72px;
+            height: 72px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 2.5px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .thumb-img:hover, .thumb-img.active {
+            border-color: #618bc4;
+            transform: scale(1.12);
+            box-shadow: 0 4px 10px rgba(97,139,196,0.4);
+        }
+
+        .price {
+            color: #1e3a8a;
+            font-size: 2.4rem;
+            font-weight: 800;
+        }
+        .btn-add-cart {
+            background-color: #253f63;
+            color: white;
+            padding: 15px 32px;
+            font-size: 1.15rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+        }
+        .btn-buy-now {
+            border: 2.5px solid #618bc4;
+            color: #618bc4;
+            padding: 15px 32px;
+            font-size: 1.15rem;
+            font-weight: bold;
+            background: white;
+            border-radius: 8px;
+        }
+        .qty-btn {
+            width: 52px;
+            height: 52px;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px !important;
+        }
+
+        /* Responsive tối ưu mobile */
+        @media (max-width: 576px) {
+            .product-title { font-size: 1.38rem !important; }
+            .price { font-size: 2rem !important; }
+            .thumb-img { width: 60px; height: 60px; }
+            .btn { font-size: 1rem !important; padding: 12px 22px !important; }
+            .qty-btn { width: 46px; height: 46px; font-size: 1.4rem; }
+        }
+        /* === STYLE CHO HIỆU ỨNG HOVER === */
+        .product-card {
+            overflow: hidden;
+            position: relative;
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+        .view-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0; 
+            transition: opacity 0.3s;
+            z-index: 10;
+            padding: 10px 25px;
+            font-weight: bold;
+        }
+        .img-wrapper img {
+            transition: opacity 0.3s, transform 0.3s; /* Thêm transform cho hiệu ứng phóng to */
+            width: 100%; 
+            height: 400px;
+            object-fit: cover;
+        }
+        .product-card:hover .img-wrapper img {
+            opacity: 0.6; 
+            transform: scale(1.05); /* Phóng to nhẹ khi hover */
+        }
+        .product-card:hover .view-btn {
+            opacity: 1; 
+        }
+        /* === KẾT THÚC STYLE CHO HIỆU ỨNG HOVER === */
+    </style>
+</head>
+<body>
+
+<div class="container-fluid py-4" style="background-color:#f7f9fc; min-height: 100vh;">
+    <div class="container px-4">
+
+        <!-- Nút quay lại -->
+        <div class="mb-4">
+            <a href="SanPham.html" class="back-link">
+                ← QUAY LẠI DANH SÁCH
+            </a>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Cột ảnh sản phẩm -->
+            <div class="col-lg-5">
+                <div class="text-center mb-4">
+                    <img src="anh/sp/setdo.jpg" id="mainImage" class="img-fluid" alt="Set bé Cherry ngọt ngào">
+                </div>
+
+                <!-- Thumbnail nhỏ (cuộn ngang mượt trên mobile) -->
+                <div class="d-flex justify-content-center gap-3 overflow-x-auto pb-2">
+                    <img src="anh/sp/setdo.jpg" class="thumb-img active" onclick="changeImg(this)">
+                    <img src="anh/sp/setdo1.jpg" class="thumb-img" onclick="changeImg(this)">
+                    <img src="anh/sp/setdo2.jpg" class="thumb-img" onclick="changeImg(this)">
+                    <img src="anh/sp/setdo3.jpg" class="thumb-img" onclick="changeImg(this)">
+                    <img src="anh/sp/setdo4.jpg" class="thumb-img" onclick="changeImg(this)">
+                </div>
+            </div>
+
+            <!-- Cột thông tin sản phẩm -->
+            <div class="col-lg-7">
+                <h1 class="fw-bold mb-3 product-title" style="color:#253f63; line-height: 1.4;">
+                    Set bé Cherry ngọt ngào mặc đi chơi, thoải mái, dễ dàng vận động từ 4kg đến 16kg
+                </h1>
+
+                <p class="mb-3" style="color:#253f63; font-size:1.05rem;">
+                    Mã SP: <span style="color:#618bc4;">2002337</span> • 
+                    Tình trạng: <span style="color:#618bc4;">Còn hàng</span> • 
+                    Thương hiệu: <span style="color:#618bc4;">TWEE</span>
+                </p>
+
+                <div class="d-flex align-items-baseline mb-4">
+                    <span class="fw-bold me-3" style="color:#253f63;">Giá:</span>
+                    <span class="price">499.000đ</span>
+                </div>
+
+                <!-- Màu sắc -->
+                <div class="mb-4">
+                    <p class="fw-bold mb-2" style="color:#253f63;">Màu sắc:</p>
+                    <div class="d-flex gap-4 flex-wrap">
+                        <label><input type="radio" name="mausac" class="me-1" checked> Đỏ</label>
+                        <label><input type="radio" name="mausac" class="me-1"> Hồng</label>
+                        <label><input type="radio" name="mausac" class="me-1"> Xanh</label>
+                        <label><input type="radio" name="mausac" class="me-1"> Trắng</label>
+                    </div>
+                </div>
+
+                <!-- Size -->
+                <div class="mb-4">
+                    <p class="fw-bold mb-2" style="color:#253f63;">Size:</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <input type="radio" class="btn-check" name="Size" id="sz2">
+                        <label class="btn btn-outline-secondary" for="sz2">sz2: 4-6kg</label>
+
+                        <input type="radio" class="btn-check" name="Size" id="sz4">
+                        <label class="btn btn-outline-secondary" for="sz4">sz4: 6-8kg</label>
+
+                        <input type="radio" class="btn-check" name="Size" id="sz6">
+                        <label class="btn btn-outline-secondary" for="sz6">sz6: 8-12kg</label>
+
+                        <input type="radio" class="btn-check" name="Size" id="sz8">
+                        <label class="btn btn-outline-secondary" for="sz8">sz8: 12-14kg</label>
+
+                        <input type="radio" class="btn-check" name="Size" id="sz10">
+                        <label class="btn btn-outline-secondary" for="sz10">sz10: 14-15kg</label>
+
+                        <input type="radio" class="btn-check" name="Size" id="sz12">
+                        <label class="btn btn-outline-secondary" for="sz12">sz12: 15-16kg</label>
+                    </div>
+                </div>
+
+                <!-- Số lượng -->
+                <div class="d-flex align-items-center gap-3 mb-5">
+                    <span class="fw-bold" style="color:#253f63;">Số lượng:</span>
+                    <div class="border rounded d-flex">
+                        <button class="btn qty-btn" onclick="changeQty(-1)">−</button>
+                        <input type="text" id="qty" value="1" class="text-center border-0" style="width:70px;" readonly>
+                        <button class="btn qty-btn" onclick="changeQty(1)">+</button>
+                    </div>
+                </div>
+
+                <!-- Nút hành động -->
+                <div class="d-grid d-md-block gap-3">
+                    <button class="btn btn-add-cart mb-3 mb-md-0 me-md-3">
+                        THÊM VÀO GIỎ HÀNG
+                    </button>
+                    <button class="btn btn-buy-now">
+                        MUA NGAY
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Đánh giá khách hàng -->
+        <div class="mt-5">
+            <h4 class="fw-bold mb-4" style="color:#253f63;">Đánh giá từ khách hàng</h4>
+
+            <div class="card p-4 mb-4 shadow-sm">
+                <h6 class="fw-bold mb-3">Để lại đánh giá của bạn</h6>
+                <textarea class="form-control mb-3" rows="3" placeholder="Chia sẻ cảm nhận của bạn về sản phẩm..."></textarea>
+                <button class="btn btn-primary">Gửi bình luận</button>
+            </div>
+
+            <div class="card p-4 mb-3 shadow-sm">
+                <h6 class="fw-bold">Nguyễn Thị Lan</h6>
+                <div class="text-warning mb-2">★★★★★</div>
+                <p>Sản phẩm rất đẹp, màu giống hình. Chất vải mềm, bé nhà mình mặc rất thích!</p>
+                <small class="text-muted">12/10/2024</small>
+            </div>
+
+            <div class="card p-4 mb-3 shadow-sm">
+                <h6 class="fw-bold">Trần Phúc</h6>
+                <div class="text-warning mb-2">★★★★☆</div>
+                <p>Giao hàng nhanh, vải ok nhưng form hơi nhỏ, nên chọn lớn hơn 1 size nha mọi người.</p>
+                <small class="text-muted">03/11/2024</small>
+            </div>
+
+            <div class="card p-4 mb-5 shadow-sm">
+                <h6 class="fw-bold">Minh Anh</h6>
+                <div class="text-warning mb-2">★★★★★</div>
+                <p>Chất liệu thoáng mát, bé chạy nhảy thoải mái. Rất đáng mua!</p>
+                <small class="text-muted">29/09/2024</small>
+            </div>
+        </div>
+
+        <!-- Sản phẩm liên quan -->
+        <h4 class="fw-bold mb-4" style="color:#253f63;">Sản phẩm liên quan</h4>
+        <div class="row">
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/sp/setxanh.jpg" class="card-img-top" alt="Twee hoa hồng nhỏ">
+                        </div>
+                        <a href="product1.html" class="btn btn-primary view-btn">Xem chi tiết</a>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Set Bé Tim xanh </h6>
+                        <p class="text-muted fw-bold">Giá: 359.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/sp/nguhong.jpg" class="card-img-top" alt="Twee hoa hồng nhỏ">
+                        </div> 
+                        <a href="product2.html" class="btn btn-primary view-btn">Xem chi tiết</a>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Twee hoa hồng nhỏ </h6>
+                        <p class="text-muted fw-bold">Giá: 109.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 mb-4">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/sp/setdo.jpg" class="card-img-top" alt="Bé Cherry Ngọt Ngào">
+                        </div>
+                        <a href="product3.html" class="btn btn-primary view-btn">Xem chi tiết</a>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Bé Cherry Ngọt Ngào</h6>
+                        <p class="text-muted fw-bold">Giá: 499.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+function changeImg(el) {
+    document.getElementById('mainImage').src = el.src;
+    document.querySelectorAll('.thumb-img').forEach(img => img.classList.remove('active'));
+    el.classList.add('active');
+}
+
+function changeQty(n) {
+    let input = document.getElementById('qty');
+    let val = parseInt(input.value) + n;
+    if (val < 1) val = 1;
+    input.value = val;
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

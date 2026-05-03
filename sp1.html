@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Áo dài gấm hoa cúc bé gái - TWEE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #f7f9fc; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        a { text-decoration: none; }
+
+        .back-link {
+            color: #618bc4;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Ảnh chính + thumbnail */
+        #mainImage {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .thumb-img {
+            width: 72px;
+            height: 72px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 2.5px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .thumb-img:hover, .thumb-img.active {
+            border-color: #618bc4;
+            transform: scale(1.12);
+            box-shadow: 0 4px 10px rgba(97,139,196,0.4);
+        }
+
+        .price {
+            color: #1e3a8a;
+            font-size: 2.4rem;
+            font-weight: 800;
+        }
+        .btn-add-cart {
+            background-color: #253f63;
+            color: white;
+            padding: 15px 32px;
+            font-size: 1.15rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+        }
+        .btn-buy-now {
+            border: 2.5px solid #618bc4;
+            color: #618bc4;
+            padding: 15px 32px;
+            font-size: 1.15rem;
+            font-weight: bold;
+            background: white;
+            border-radius: 8px;
+        }
+        .qty-btn {
+            width: 52px;
+            height: 52px;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px !important;
+        }
+
+        /* Responsive tối ưu mobile */
+        @media (max-width: 576px) {
+            .product-title { font-size: 1.38rem !important; }
+            .price { font-size: 2rem !important; }
+            .thumb-img { width: 60px; height: 60px; }
+            .btn { font-size: 1rem !important; padding: 12px 22px !important; }
+            .qty-btn { width: 46px; height: 46px; font-size: 1.4rem; }
+        }
+        /**-----SẢN PHẨM LIÊN QUAN-------**/
+       .product-card {
+            overflow: hidden;
+            position: relative;
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+        .view-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0; 
+            transition: opacity 0.3s;
+            z-index: 10;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+        .img-wrapper img {
+            transition: opacity 0.3s, transform 0.3s; /* Thêm transform cho hiệu ứng phóng to */
+            width: 100%; 
+            height: auto;
+        }
+        .product-card:hover .img-wrapper img {
+            opacity: 0.6; 
+            transform: scale(1.05);
+
+             
+        }
+        .product-card:hover .view-btn {
+            opacity: 1; 
+        }
+        .le{
+            padding-top: 30px;
+            padding-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid py-4" style="background-color:#f7f9fc; min-height: 100vh;">
+    <div class="container px-4">
+
+        <!-- Nút quay lại -->
+        <div class="mb-4">
+            <a href="TrangChu.html" class="back-link">
+                ← QUAY LẠI TRANG CHỦ
+            </a>
+        </div>
+
+        <div class="row g-4">
+
+            <!-- Cột ảnh sản phẩm -->
+            <div class="col-lg-5">
+                <div class="text-center mb-4">
+                    <img src="anh/spnb/sp1.jpg" id="mainImage" class="img-fluid" alt="Áo dài gấm hoa cúc bé gái">
+                </div>
+
+                <!-- Thumbnail nhỏ (cuộn ngang mượt trên mobile) -->
+                <div class="d-flex justify-content-center gap-3 overflow-x-auto pb-2">
+                    <img src="anh/spnb/sp1.1.jpg" class="thumb-img active" onclick="changeImg(this)">
+                    <img src="anh/spnb/sp1.2.jpg" class="thumb-img" onclick="changeImg(this)">
+                    <img src="anh/spnb/sp1.3.jpg" class="thumb-img" onclick="changeImg(this)">
+                    <img src="anh/spnb/sp1.4.jpg" class="thumb-img" onclick="changeImg(this)">
+                    <img src="anh/spnb/sp1.5.jpg" class="thumb-img" onclick="changeImg(this)">
+                </div>
+            </div>
+
+            <!-- Cột thông tin sản phẩm -->
+            <div class="col-lg-7">
+                <h1 class="fw-bold mb-3 product-title" style="color:#253f63; line-height: 1.4;">
+                    Áo dài gấm hoa cúc bé gái mặc tết tặng kèm quần (6kg - 45kg)
+                </h1>
+
+                <p class="mb-3" style="color:#253f63; font-size:1.05rem;">
+                    Mã SP: <span style="color:#618bc4;">2002265</span> • 
+                    Tình trạng: <span style="color:#618bc4;">Còn hàng</span> • 
+                    Thương hiệu: <span style="color:#618bc4;">TWEE</span>
+                </p>
+
+                <div class="d-flex align-items-baseline mb-4">
+                    <span class="fw-bold me-3" style="color:#253f63;">Giá:</span>
+                    <span class="price">390.000đ</span>
+                </div>
+
+                <!-- Màu sắc -->
+                <div class="mb-4">
+                    <p class="fw-bold mb-2" style="color:#253f63;">Màu sắc:</p>
+                    <div class="d-flex gap-4 flex-wrap">
+                        <label><input type="radio" name="mausac" class="me-1"> Đỏ</label>
+                        <label><input type="radio" name="mausac" class="me-1"> Hồng</label>
+                        <label><input type="radio" name="mausac" class="me-1"> Vàng</label>
+                        <label><input type="radio" name="mausac" class="me-1"> Trắng</label>
+                    </div>
+                </div>
+
+                <!-- Size -->
+                <div class="mb-4">
+                    <p class="fw-bold mb-2" style="color:#253f63;">Size:</p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <input type="radio" class="btn-check" name="Size" id="sz2">
+                        <label class="btn btn-outline-secondary" for="sz2">sz2: 6-9kg (dưới 2 tuổi)</label>
+
+                        <input type="radio" class="btn-check" name="Size" id="sz4">
+                        <label class="btn btn-outline-secondary" for="sz4">sz4: 10-15kg (dưới 3.5 tuổi)</label>
+
+                        <input type="radio" class="btn-check" name="Size" id="sz6">
+                        <label class="btn btn-outline-secondary" for="sz6">sz6: 15-20kg (dưới 4.5 tuổi)</label>
+
+                        <input type="radio" class="btn-check" name="Size" id="sz8">
+                        <label class="btn btn-outline-secondary" for="sz8">sz8: 20-25kg (dưới 6 tuổi)</label>
+
+                        <input type="radio" class="btn-check" name="Size" id="sz10">
+                        <label class="btn btn-outline-secondary" for="sz10">sz10: 25-35kg (dưới 1m25)</label>
+
+                        <input type="radio" class="btn-check" name="Size" id="sz12">
+                        <label class="btn btn-outline-secondary" for="sz12">sz12: 36-45kg (dưới 1m35)</label>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#sizeModal">
+                        Bảng quy đổi kích cỡ
+                    </button>
+                </div>
+
+                <!-- Số lượng -->
+                <div class="d-flex align-items-center gap-3 mb-5">
+                    <span class="fw-bold" style="color:#253f63;">Số lượng:</span>
+                    <div class="border rounded d-flex">
+                        <button class="btn qty-btn" onclick="changeQty(-1)">−</button>
+                        <input type="text" id="qty" value="1" class="text-center border-0" style="width:70px;" readonly>
+                        <button class="btn qty-btn" onclick="changeQty(1)">+</button>
+                    </div>
+                </div>
+
+                <!-- Nút hành động -->
+                <div class="d-grid d-md-block gap-3">
+                    <button class="btn btn-add-cart mb-3 mb-md-0 me-md-3">
+                        THÊM VÀO GIỎ HÀNG
+                    </button>
+                    <button class="btn btn-buy-now">
+                        MUA NGAY
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Đánh giá khách hàng -->
+        <div class="mt-5">
+            <h4 class="fw-bold mb-4" style="color:#253f63;">Đánh giá từ khách hàng</h4>
+
+            <div class="card p-4 mb-4 shadow-sm">
+                <h6 class="fw-bold mb-3">Để lại đánh giá của bạn</h6>
+                <textarea class="form-control mb-3" rows="3" placeholder="Chia sẻ cảm nhận của bạn về sản phẩm..."></textarea>
+                <button class="btn btn-primary">Gửi bình luận</button>
+            </div>
+
+            <div class="card p-4 mb-3 shadow-sm">
+                <h6 class="fw-bold">Nguyễn Thị Lan</h6>
+                <div class="text-warning mb-2">★★★★★</div>
+                <p>Sản phẩm rất đẹp, màu giống hình. Chất vải mềm, bé nhà mình mặc rất thích!</p>
+                <small class="text-muted">12/10/2024</small>
+            </div>
+
+            <div class="card p-4 mb-3 shadow-sm">
+                <h6 class="fw-bold">Trần Phúc</h6>
+                <div class="text-warning mb-2">★★★★☆</div>
+                <p>Giao hàng nhanh, vải ok nhưng form hơi nhỏ, nên chọn lớn hơn 1 size nha mọi người.</p>
+                <small class="text-muted">03/11/2024</small>
+            </div>
+
+            <div class="card p-4 mb-5 shadow-sm">
+                <h6 class="fw-bold">Minh Anh</h6>
+                <div class="text-warning mb-2">★★★★★</div>
+                <p>Chất liệu thoáng mát, bé chạy nhảy thoải mái. Rất đáng mua!</p>
+                <small class="text-muted">29/09/2024</small>
+            </div>
+        </div>
+
+        <!-- Sản phẩm liên quan -->
+        <h4 class="fw-bold mb-4" style="color:#253f63;">Sản phẩm liên quan</h4>
+        <div class="row">
+                        <div class="col-md-3 col-sm-6 mb-3">
+                             <div class="card product-card shadow-sm">
+                                <div class="img-wrapper">
+                                    <div> 
+                                            <img src="anh/spnb/sp1.jpg" class="card-img-top" alt="Set Bé Tim Xanh">
+                                    </div>
+                                    <a href="sp1.html" class="btn btn-primary view-btn">Xem chi tiết</a>
+                                    
+                                </div>
+                                <div class="card-body text-center">
+                                    <h6 class="card-title"> Áo dài gấm hoa cúc  </h6>
+                                    <p class="text-muted fw-bold">Giá: 339.000 Đ</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3 col-sm-6 mb-3">
+                            <div class="card product-card shadow-sm">
+                                <div class="img-wrapper">
+                                    <div>
+                                            <img src="anh/spnb/sp2.jpg" class="card-img-top" alt="Twee hoa hồng nhỏ">
+                                    </div> 
+                                    <a href="sp2.html" class="btn btn-primary view-btn">Xem chi tiết</a>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h6 class="card-title">Áo Dài Bé Gái </h6>
+                                    <p class="text-muted fw-bold">Giá: 309.000 Đ</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3 col-sm-6 mb-3">
+                            <div class="card product-card shadow-sm">
+                                <div class="img-wrapper">
+                                    <div>
+                                         <img src="anh/spnb/sp3.1.jpg" class="card-img-top" alt="Twee hoa hồng nhỏ">
+                                    </div>
+                                    <a href="sp3.html" class="btn btn-primary view-btn">Xem chi tiết</a>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h6 class="card-title">Set Đồ Tết Áo Dài Cách Tân</h6>
+                                    <p class="text-muted fw-bold">Giá: 361.000 Đ</p>
+                                </div>
+                            </div>
+                        </div>
+                          <div class="col-md-3 col-sm-6 mb-3">
+                            <div class="card product-card shadow-sm">
+                                <div class="img-wrapper">
+                                    <div>
+                                         <img src="anh/spnb/sp4.jpg" class="card-img-top" alt="Twee hoa hồng nhỏ">
+                                    </div>
+                                    <a href="sp4.html" class="btn btn-primary view-btn">Xem chi tiết</a>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h6 class="card-title">Bộ vest bé trai Hàn Quốc</h6>
+                                    <p class="text-muted fw-bold">Giá: 750.000 Đ</p>
+                                </div>
+                            </div>
+                        </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal bảng size -->
+<div class="modal fade" id="sizeModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fw-bold">Bảng Quy Đổi Kích Cỡ Chi Tiết</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered text-center">
+                    <thead class="table-light">
+                        <tr><th>Size</th><th>Cân nặng (kg)</th><th>Chiều cao tham khảo</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>sz2</td><td>6-9kg</td><td>Dưới 2 tuổi</td></tr>
+                        <tr><td>sz4</td><td>10-15kg</td><td>Dưới 3.5 tuổi</td></tr>
+                        <tr><td>sz6</td><td>15-20kg</td><td>Dưới 4.5 tuổi</td></tr>
+                        <tr><td>sz8</td><td>20-25kg</td><td>Dưới 6 tuổi</td></tr>
+                        <tr><td>sz10</td><td>25-35kg</td><td>Dưới 1m25</td></tr>
+                        <tr><td>sz12</td><td>36-45kg</td><td>Dưới 1m35</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function changeImg(el) {
+    document.getElementById('mainImage').src = el.src;
+    document.querySelectorAll('.thumb-img').forEach(img => img.classList.remove('active'));
+    el.classList.add('active');
+}
+
+function changeQty(n) {
+    let input = document.getElementById('qty');
+    let val = parseInt(input.value) + n;
+    if (val < 1) val = 1;
+    input.value = val;
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
